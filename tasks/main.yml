@@ -19,9 +19,9 @@
     mode: 0644
     validate: "{{ item.validate | default(omit) }}"
   with_items:
-    - src: "{{ dnsmasq_etc_default_file.lstrip('/') }}.j2"
+    - src: "etc/default/dnsmasq.j2"
       dest: "{{ dnsmasq_etc_default_file }}"
-    - src: "{{ dnsmasq_etc_conf_file.lstrip('/') }}.j2"
+    - src: "etc/dnsmasq.conf.j2"
       dest: "{{ dnsmasq_etc_conf_file }}"
       validate: 'dnsmasq --test -C %s'
   notify: restart dnsmasq
